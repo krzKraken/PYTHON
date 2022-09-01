@@ -1,19 +1,23 @@
 # Ejercicio Clase Vehiculo
-
-class Vehiculo:
-    color = "rojo"
-    ruedas = 4
-    puertas = 5
+class Vehiculo():
+    def __init__(self, color, ruedas, puertas):
+        self.color = color
+        self.ruedas = ruedas
+        self.puertas = puertas
 
 
 class Coche(Vehiculo):
-    velocidad = 100
-    cilindrada = 2.0
+    def __init__(self, color, ruedas, puertas, velocidad, cilindrada):
+        super().__init__(color, ruedas, puertas)
+        self.velocidad = velocidad
+        self.cilindrada = cilindrada
 
 
-coche = Coche()
-print(f"El coche es de color: {coche.color}")
-print(f"El coche tiene {coche.ruedas} ruedas")
-print(f"El coche tiene {coche.puertas} puertas")
-print(f"la velocidad del coche es {coche.velocidad} km/h")
-print(f"la cilidrada del coche es de {coche.cilindrada} litros")
+miCoche = Coche(color="rojo", ruedas=4, puertas=4,
+                velocidad=100, cilindrada=2000)
+
+print(f"El coche de color {miCoche.color}")
+print(f"Tiene {miCoche.color} ruedas")
+print(f"El coche tiene {miCoche.color} puertas")
+print(f"Alcanza una velocidad de {miCoche.color} km/h")
+print(f"Tiene una cilindrada de {miCoche.color} cc")
