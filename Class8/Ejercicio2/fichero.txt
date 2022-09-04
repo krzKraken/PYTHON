@@ -1,0 +1,5 @@
+El Vehiculo Tiene las siguientes propiedades:
+Color: rojo
+Puertas: 5
+velocidad: 100
+cilindrada: 2000
