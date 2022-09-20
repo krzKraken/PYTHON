@@ -1,0 +1,43 @@
+############# Crear nuevo proyecto Django ############
+pip/pipenv install django
+
+# Crear proyecto (TODO)
+django-admin startproject <nombreProyecto> ruta o . (en la ubicacion)
+
+# Crear aplicacion (puede tener muchas aplicaciones un proyecto)
+
+# Correr aplicacion
+python3 manage.py runserver
+
+# Crear app
+python3 manage.py startapp <NombreApp>
+
+# Tenemos que conectar nuestro proyecto general con nuestra aplicacion 
+# En el proyecto en settings agregamos la aplicacion 
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "catalog.apps.CatalogConfig", --> Agregamos la aplicacion a installed apps
+]
+
+# Tenemos que generar una ruta que nos direcciones a la aplicacion
+# En el proyect/urls.py dentro del urlpatterns
+# urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("catalog", include('catalog.urls'))  --> Agregamos la ruta con el include importado
+]
+
+# Ahora tenemos que en la aplicacion crear un fichero de urls.py
+    #catalog/urls.py#
+    from django.conf.urls import urls
+    from . import views
+    urlpatterns = []
+
+# Tenemos que preparar la base de datos para que arranque
+# Para corregir todos los problemas de migraciones
+python3 manage.py migrate 
