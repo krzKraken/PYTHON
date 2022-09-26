@@ -1,0 +1,63 @@
+1) Crear la carpeta del proyecto-> djangoproject
+2) Instalar virtualenv -> $pip install virtualenv
+3) Crear el entorno virtual -> $virtualenv venv
+4) Abrir el entorno virtual -> .\venv\script\activate
+5) Instalar django -> pip install django
+6) Verificar django -> django-admin --version
+7) Crear proyecto djanfo -> django-admin startproject <nombreprojecto> . 
+8) Correr el proyecto -> python manage.py runserver <PortNumber>
+# Crear app
+9) python manage.py startapp <nombreApp>
+
+##################################################################
+# Carpeta apps 
+models -> Son las clases que se convierten en tablas
+views -> Son las vistas que se van a renderizar
+
+# Carpeta proyecto
+settings -> configuracion de aplicaciones
+urls -> Direcciones que apuntan a una app o views
+
+#################################################################
+# en las vistas podemos crear una funcion que puede renderizar o enviar una informacion a una url, en el proyecto en settings en las urlpatterns importamos esa vista o funcion y podemos correr la app
+
+################### INCLUDE ###################################
+# En la app creamos un archivo urls.py donde se crean las direcciones de la app
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.hello),
+    path("about", views.about),
+]
+
+# en el proyecto se importa de from django.utls import path, include 
+from django.urls import path, include
+
+# from myapp import views
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    # path("", views.hello),
+    # path("about", views.about),
+    path("", include("myapp.urls")),  # Incluye las urls de urls.py de myapp
+]
+
+
+######################### MIGRATIONS #####################################
+Todos los cambios en la base de datos seran actualizados cuando se corran estos codigos
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+################ myapp/models.py #######################
+Aqui creamos las tablas personalizadas que necesitamos para nuestro proyecto
+
+
+############# Consola #####################
+python manage.py shell
+
+############ SUPER USUARIO ##############
+python manage.py createsuperuser
