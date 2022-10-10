@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 import uuid
 
@@ -7,9 +8,10 @@ class Directores(models.Model):
     name = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     age = models.IntegerField(default=0)
+    bio = models.TextField(max_length=500, default='')
 
     def __str__(self):
-        return self.name + " " + self.lastName
+        return "str prints: " + self.name + " " + self.lastName
 
 
 class Peliculas(models.Model):
@@ -20,7 +22,7 @@ class Peliculas(models.Model):
                                    null=True)
 
     def __str__(self):
-        return self.name
+        return "str print: " + self.name + ' - ' + self.directores.name + ' ' + self.directores.lastName
 
 
 class InstanciaPeliculas(models.Model):
