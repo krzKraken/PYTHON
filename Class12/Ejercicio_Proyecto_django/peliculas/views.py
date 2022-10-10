@@ -9,8 +9,8 @@ def home(request):
 
 
 def directores(request):
-    directores = list(Directores.objects.values())
-    return JsonResponse(directores, safe=False)
+    directores = list(Directores.objects.all())
+    return render(request, 'directores.html', {'directores': directores})
 
 
 def peliculas(request):

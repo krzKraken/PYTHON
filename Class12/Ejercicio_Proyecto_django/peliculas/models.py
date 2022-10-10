@@ -11,7 +11,7 @@ class Directores(models.Model):
     bio = models.TextField(max_length=500, default='')
 
     def __str__(self):
-        return "str prints: " + self.name + " " + self.lastName
+        return self.name + " " + self.lastName
 
 
 class Peliculas(models.Model):
@@ -22,7 +22,7 @@ class Peliculas(models.Model):
                                    null=True)
 
     def __str__(self):
-        return "str print: " + self.name + ' - ' + self.directores.name + ' ' + self.directores.lastName
+        return self.name + ' - ' + self.directores.name + ' ' + self.directores.lastName
 
 
 class InstanciaPeliculas(models.Model):
